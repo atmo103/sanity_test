@@ -53,6 +53,15 @@ const testimonials = [
   },
 ];
 
+// Original client marks from the published Axiom Power template.
+const trustedClients = [
+  { name: "Sundvik", src: "https://cdn.prod.website-files.com/6a6f262be15ed44701a53fe8/6a7471e7a58387b53a9602d2_logoipsum-custom-logo%20%286%29.svg" },
+  { name: "Helix DC", src: "https://cdn.prod.website-files.com/6a6f262be15ed44701a53fe8/6a76d9446a155020f1a2343c_logoipsum-custom-logo%20%2811%29.svg" },
+  { name: "Texas Grid", src: "https://cdn.prod.website-files.com/6a6f262be15ed44701a53fe8/6a74726fb3163cd43a8efa71_logoipsum-custom-logo%20%288%29.svg" },
+  { name: "Northbank", src: "https://cdn.prod.website-files.com/6a6f262be15ed44701a53fe8/6a7472d8fc28e421fdf4d756_logoipsum-custom-logo%20%289%29.svg" },
+  { name: "Meridian", src: "https://cdn.prod.website-files.com/6a6f262be15ed44701a53fe8/6a74731589d0ed3b5e3417ac_logoipsum-custom-logo%20%2810%29.svg" },
+];
+
 function Arrow({ direction }) {
   return (
     <svg
@@ -168,6 +177,35 @@ export default function HomeTestimonials() {
           >
             <Arrow direction="next" />
           </button>
+        </div>
+      </div>
+
+      <div className="home-testimonials__trusted" aria-label="Trusted by">
+        <p className="home-testimonials__trusted-label">
+          <span className="home-testimonials__accent" aria-hidden="true" />
+          Trusted by
+        </p>
+        <div className="home-testimonials__trusted-viewport">
+          <div className="home-testimonials__trusted-track">
+            {[0, 1].map((repeat) => (
+              <div
+                className="home-testimonials__trusted-sequence"
+                key={repeat}
+                aria-hidden={repeat === 1 ? "true" : undefined}
+              >
+                {trustedClients.map(({ name, src }) => (
+                  <img
+                    key={name}
+                    className="home-testimonials__trusted-logo"
+                    src={src}
+                    alt={repeat === 0 ? name : ""}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                ))}
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
