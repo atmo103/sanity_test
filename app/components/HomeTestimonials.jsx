@@ -53,13 +53,74 @@ const testimonials = [
   },
 ];
 
-// Original client marks from the published Axiom Power template.
+// Client marks are bundled locally as white artwork with transparent backgrounds.
 const trustedClients = [
-  { name: "Sundvik", src: "https://cdn.prod.website-files.com/6a6f262be15ed44701a53fe8/6a7471e7a58387b53a9602d2_logoipsum-custom-logo%20%286%29.svg" },
-  { name: "Helix DC", src: "https://cdn.prod.website-files.com/6a6f262be15ed44701a53fe8/6a76d9446a155020f1a2343c_logoipsum-custom-logo%20%2811%29.svg" },
-  { name: "Texas Grid", src: "https://cdn.prod.website-files.com/6a6f262be15ed44701a53fe8/6a74726fb3163cd43a8efa71_logoipsum-custom-logo%20%288%29.svg" },
-  { name: "Northbank", src: "https://cdn.prod.website-files.com/6a6f262be15ed44701a53fe8/6a7472d8fc28e421fdf4d756_logoipsum-custom-logo%20%289%29.svg" },
-  { name: "Meridian", src: "https://cdn.prod.website-files.com/6a6f262be15ed44701a53fe8/6a74731589d0ed3b5e3417ac_logoipsum-custom-logo%20%2810%29.svg" },
+  {
+    name: "SENA",
+    src: "/images/logos/sena.svg",
+    width: 986,
+    height: 962,
+  },
+  {
+    name: "Coca-Cola",
+    src: "/images/logos/coca-cola.svg",
+    width: 501,
+    height: 160,
+  },
+  {
+    name: "Colombina",
+    src: "/images/logos/colombina.svg",
+    width: 346,
+    height: 177,
+  },
+  {
+    name: "Baxter",
+    src: "/images/logos/baxter.svg",
+    width: 166,
+    height: 28,
+  },
+  {
+    name: "Manuelita",
+    src: "/images/logos/manuelita.svg",
+    width: 282,
+    height: 64,
+  },
+  {
+    name: "Nutrium",
+    src: "/images/logos/nutrium.svg",
+    width: 374,
+    height: 97,
+  },
+  {
+    name: "Riopaila Castilla",
+    src: "/images/logos/riopaila-castilla.svg",
+    width: 1214,
+    height: 246,
+  },
+  {
+    name: "Levapan",
+    src: "/images/logos/levapan.svg",
+    width: 201,
+    height: 124,
+  },
+  {
+    name: "Smurfit Kappa",
+    src: "/images/logos/smurfit-kappa.svg",
+    width: 245,
+    height: 32,
+  },
+  {
+    name: "Universidad Santiago de Cali",
+    src: "/images/logos/universidad-santiago-de-cali.svg",
+    width: 177,
+    height: 177,
+  },
+  {
+    name: "Universidad Icesi",
+    src: "/images/logos/universidad-icesi.svg",
+    width: 476,
+    height: 177,
+  },
 ];
 
 function Arrow({ direction }) {
@@ -182,7 +243,7 @@ export default function HomeTestimonials() {
 
       <div className="home-testimonials__trusted" aria-label="Trusted by">
         <p className="home-testimonials__trusted-label">
-          <span className="home-testimonials__accent" aria-hidden="true" />
+          <span className="home-testimonials__trusted-accent" aria-hidden="true" />
           Trusted by
         </p>
         <div className="home-testimonials__trusted-viewport">
@@ -193,13 +254,15 @@ export default function HomeTestimonials() {
                 key={repeat}
                 aria-hidden={repeat === 1 ? "true" : undefined}
               >
-                {trustedClients.map(({ name, src }) => (
+                {trustedClients.map(({ name, src, width, height }) => (
                   <img
                     key={name}
                     className="home-testimonials__trusted-logo"
                     src={src}
                     alt={repeat === 0 ? name : ""}
-                    loading="lazy"
+                    width={width}
+                    height={height}
+                    loading="eager"
                     decoding="async"
                   />
                 ))}
@@ -211,3 +274,4 @@ export default function HomeTestimonials() {
     </section>
   );
 }
+
