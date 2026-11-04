@@ -17,15 +17,13 @@ export default function HomeHero() {
 
       <div className="home-hero__content">
         <h1 id="home-hero-title" className="home-hero__title">
-          <span>Power that holds</span>
-          <span className="home-hero__title-muted">under load.</span>
+          <span>Ingeniería que </span>
+          <span className="home-hero__title-muted">transforma un país.</span>
         </h1>
 
         <div className="home-hero__bottom">
           <p className="home-hero__description">
-            Sanity Power designs, builds, and operates grid-scale power
-            systems for AI factories, mission-critical facilities, and
-            storage assets. 99.982% fleet uptime, measured at the bus.
+            Somos fabricantes directos de plantas de procesos y módulos didácticos a escala piloto, desarrollados con estándares y componentes industriales. Diseñamos, construimos y ponemos en marcha soluciones hechas a la medida de sus necesidades.
           </p>
 
           <a className="home-hero__press" href="/newsroom" aria-label="Read the latest press release">

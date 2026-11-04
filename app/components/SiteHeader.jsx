@@ -64,13 +64,13 @@ export default function SiteHeader() {
           <span className="site-header__brand-mark" aria-hidden="true">
             S.
           </span>
-          <span className="site-header__brand-name">Sanity</span>
+          <span className="site-header__brand-name">Sanity Test</span>
         </a>
 
         <nav className="site-header__desktop-nav" aria-label="Main navigation">
           <a href="/platform">Platform</a>
-          <a href="/technology">Technology</a>
-          <a href="/case-studies">Case Studies</a>
+          <a href="/technology">¿Quiénes somos?</a>
+          <a href="/case-studies">Proyectos Destacados</a>
           <button
             className="site-header__nav-toggle"
             type="button"
@@ -78,14 +78,14 @@ export default function SiteHeader() {
             aria-controls="sanity-site-menu"
             onClick={() => setIsOpen((previous) => !previous)}
           >
-            Company
+            Soluciones
             <span className={`site-header__chevron${isOpen ? " is-open" : ""}`} aria-hidden="true" />
           </button>
         </nav>
 
         <div className="site-header__actions">
           <a className="site-header__contact" href="/contact">
-            <span>Get in touch</span>
+            <span>Contacto</span>
             <span className="site-header__contact-arrow" aria-hidden="true">↗</span>
           </a>
           <button
@@ -147,8 +147,8 @@ export default function SiteHeader() {
             </section>
 
             <div className="site-menu__bottom">
-              <span>Sanity Power <span aria-hidden="true">©</span> 2026</span>
-              <a href="/contact" onClick={() => setIsOpen(false)}>Get in touch <span aria-hidden="true">↗</span></a>
+              <span>Sanity Test <span aria-hidden="true">©</span> 2026</span>
+              <a href="/contact" onClick={() => setIsOpen(false)}>Contacto <span aria-hidden="true">↗</span></a>
             </div>
           </div>
         </>
