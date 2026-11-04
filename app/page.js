@@ -13,7 +13,7 @@ export default function HomePage() {
       <main>
         <HomeHero />
         <HomeIntro />
-        <HomeWhy />
+        {/* <HomeWhy /> */}
         <HomeTestimonials />
         <HomeNews />
       </main>

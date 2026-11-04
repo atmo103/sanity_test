@@ -16,8 +16,8 @@ const testimonials = [
       ["Since", "2024"],
     ],
     quoteMuted:
-      "“We reviewed every credible solution on the market. Sanity Power's architecture was the only one that met our interconnection and resilience requirements at once, and their team stayed on past the hard part. This is poised to become the new ",
-    quoteBright: "standard for compute in America.”",
+      "“Durante la puesta en marcha pudimos revisar el funcionamiento del sistema junto con sus ingenieros y resolver las dudas de nuestro personal. La capacitación nos ayudó a comprender la operación y las variables de control. ",
+    quoteBright: "Valoramos especialmente esa disposición para explicar las decisiones y acompañarnos mientras nos familiarizábamos con el equipo.”",
   },
   {
     id: "daniel",
@@ -32,8 +32,8 @@ const testimonials = [
       ["Since", "2026"],
     ],
     quoteMuted:
-      "Their dispatch numbers held up under audit. Sub-380 milliseconds is not a marketing claim. ",
-    quoteBright: "We measured it on our own bus, not in a model.",
+      "Necesitábamos integrar un equipo nuevo a una línea que ya estaba en operación. DidaControl revisó con nosotros las condiciones del proceso y los requerimientos de instalación y control. ",
+    quoteBright: "Pudimos discutir cada decisión técnica y llegar a un diseño que encajara con nuestra operación.",
   },
   {
     id: "priya",
@@ -48,8 +48,8 @@ const testimonials = [
       ["Since", "2025"],
     ],
     quoteMuted:
-      "The first vendor whose commissioning schedule survived contact with reality. ",
-    quoteBright: "Two campuses, on time, no derating.",
+      "La planta piloto debía responder a nuestros objetivos de investigación y permitir ensayos bajo distintas condiciones. El equipo de DidaControl entendió esa necesidad desde el diseño. ",
+    quoteBright: "Su experiencia nos ayudó a definir los equipos, la instrumentación y las posibilidades de ajuste que necesitábamos para trabajar en el laboratorio.",
   },
 ];
 
