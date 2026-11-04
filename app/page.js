@@ -12,8 +12,8 @@ export default function HomePage() {
       <SiteHeader />
       <main>
         <HomeHero />
-        <HomeIntro />
-        {/* <HomeWhy /> */}
+        {/* <HomeIntro />
+        <HomeWhy /> */}
         <HomeTestimonials />
         <HomeNews />
       </main>

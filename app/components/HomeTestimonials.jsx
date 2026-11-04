@@ -16,8 +16,8 @@ const testimonials = [
       ["Since", "2024"],
     ],
     quoteMuted:
-      "“Durante la puesta en marcha pudimos revisar el funcionamiento del sistema junto con sus ingenieros y resolver las dudas de nuestro personal. La capacitación nos ayudó a comprender la operación y las variables de control. ",
-    quoteBright: "Valoramos especialmente esa disposición para explicar las decisiones y acompañarnos mientras nos familiarizábamos con el equipo.”",
+      "Durante la puesta en marcha pudimos revisar el funcionamiento del sistema junto con sus ingenieros y resolver las dudas de nuestro personal. La capacitación nos ayudó a comprender la operación y las variables de control. ",
+    quoteBright: "Valoramos especialmente esa disposición para explicar las decisiones y acompañarnos mientras nos familiarizábamos con el equipo.",
   },
   {
     id: "daniel",
@@ -163,7 +163,7 @@ export default function HomeTestimonials() {
       <div className="home-testimonials__shell">
         <p className="home-testimonials__eyebrow">
           <span className="home-testimonials__accent" aria-hidden="true" />
-          Testimonial
+          Testimonios
         </p>
 
         <div className="home-testimonials__layout">
@@ -193,14 +193,14 @@ export default function HomeTestimonials() {
               decoding="async"
             />
 
-            <dl className="home-testimonials__stats">
+            {/* <dl className="home-testimonials__stats">
               {current.stats.map(([label, value]) => (
                 <div className="home-testimonials__stat" key={label}>
                   <dt>{label}</dt>
                   <dd>{value}</dd>
                 </div>
               ))}
-            </dl>
+            </dl> */}
           </div>
 
           <div

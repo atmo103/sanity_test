@@ -10,6 +10,8 @@
   --sanity-line: rgba(255, 255, 255, 0.16);
   --sanity-font: "Archivo", Arial, sans-serif;
   --sanity-mono: "IBM Plex Mono", monospace;
+  /* Shared by the introduction and testimonial quotes. */
+  --sanity-statement-size: max(1.25rem, 2.83vw);
   --sanity-gutter: clamp(20px, 3.2vw, 56px);
 }
 
@@ -556,7 +558,7 @@ button:focus-visible {
 /* 05 — Introduction: golden-ratio typography and a reversible scroll surface */
 .home-intro {
   /* Desktop text = 7.4vw hero title / 1.618 squared, rounded to 2.83vw. */
-  --intro-text-size: 2.83vw;
+  --intro-text-size: var(--sanity-statement-size);
   --intro-gutter: max(1.25rem, 3.2vw);
   --intro-corner-radius: max(1rem, 1.6vw);
   --intro-shrink: 0.02;
@@ -585,7 +587,7 @@ button:focus-visible {
 
 .home-intro__heading {
   margin: 0;
-  font-size: max(1.25rem, var(--intro-text-size));
+  font-size: var(--intro-text-size);
   font-weight: 400;
   line-height: 1.22;
   letter-spacing: -0.025em;
@@ -904,33 +906,43 @@ button:focus-visible {
   }
 }
 
-/* 08 — Testimonials: faithful two-column editorial slider */
+/* 08 — Testimonials: fluid editorial proportions and content-led spacing */
 .home-testimonials {
-  min-height: 0;
+  --testimonials-gutter: max(1.25rem, 2.5vw);
+  --testimonials-label-size: max(0.625rem, 0.7vw);
+  --testimonials-name-size: max(1rem, 1.3vw);
+  --testimonials-role-size: max(0.875rem, 1vw);
+  --testimonials-data-size: max(0.75rem, 0.9vw);
+  --testimonials-portrait-size: max(3rem, 4.3vw);
+  --testimonials-logo-height: max(1.5rem, 2.25vw);
+  --testimonials-arrow-size: max(2.75rem, 2.4vw);
   background: #0a0c0d;
   color: #e9e9e7;
-  overflow: hidden;
 }
 
 .home-testimonials__shell {
-  position: relative;
+  display: grid;
+  grid-template-areas:
+    "label label"
+    "profile statement"
+    "profile controls";
+  grid-template-columns: minmax(0, 44fr) minmax(0, 56fr);
+  grid-template-rows: auto minmax(min-content, 1fr) auto;
+  gap: max(1.5rem, 1.7vw) 0;
   width: 100%;
-  height: 100svh;
-  min-height: 600px;
-  padding-inline: 2%;
+  min-height: 100svh;
+  padding: max(2rem, 2.5vw) var(--testimonials-gutter) max(2.5rem, 3.2vw);
 }
 
 .home-testimonials__eyebrow {
-  position: absolute;
-  top: 0;
-  left: 2%;
+  grid-area: label;
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 0.9em;
   margin: 0;
   color: #a3a19e;
   font-family: var(--sanity-mono);
-  font-size: 13px;
+  font-size: var(--testimonials-label-size);
   font-weight: 400;
   line-height: 1.5;
   letter-spacing: 0.18em;
@@ -938,39 +950,39 @@ button:focus-visible {
 }
 
 .home-testimonials__accent {
-  flex: 0 0 5px;
-  width: 5px;
-  height: 5px;
+  flex: 0 0 0.35em;
+  width: 0.35em;
+  height: 0.35em;
   background: #ff510b;
 }
 
+/* The existing wrapper lets the profile, quote and controls share one grid. */
 .home-testimonials__layout {
-  display: grid;
-  grid-template-columns: minmax(0, 44%) minmax(0, 56%);
-  height: 100%;
+  display: contents;
 }
 
 .home-testimonials__profile {
+  grid-area: profile;
   align-self: end;
-  width: min(100%, 460px);
-  margin-bottom: clamp(56px, 10.5svh, 105px);
+  width: 55%;
+  min-width: 0;
   animation: home-testimonials-appear 320ms ease both;
 }
 
 .home-testimonials__counter {
   display: block;
-  margin-bottom: 23px;
+  margin-bottom: max(1rem, 1.25vw);
   color: #a3a19e;
   font-family: var(--sanity-mono);
-  font-size: 17px;
+  font-size: var(--testimonials-data-size);
   line-height: 1.45;
   letter-spacing: -0.04em;
 }
 
 .home-testimonials__portrait {
   display: block;
-  width: 82px;
-  height: 82px;
+  width: var(--testimonials-portrait-size);
+  height: var(--testimonials-portrait-size);
   border: 1px solid #2c3336;
   border-radius: 50%;
   background: #0a0c0d;
@@ -978,22 +990,22 @@ button:focus-visible {
 }
 
 .home-testimonials__identity {
-  margin-top: 22px;
+  margin-top: max(0.75rem, 1.15vw);
 }
 
 .home-testimonials__name {
   margin: 0;
   color: #e9e9e7;
-  font-size: 24px;
+  font-size: var(--testimonials-name-size);
   font-weight: 500;
   line-height: 1.2;
   letter-spacing: -0.045em;
 }
 
 .home-testimonials__role {
-  margin: 4px 0 0;
+  margin: 0.2em 0 0;
   color: #9c9b98;
-  font-size: 19px;
+  font-size: var(--testimonials-role-size);
   font-weight: 400;
   line-height: 1.3;
   letter-spacing: -0.025em;
@@ -1002,9 +1014,9 @@ button:focus-visible {
 .home-testimonials__company-logo {
   display: block;
   width: auto;
-  max-width: 230px;
-  height: 43px;
-  margin-top: 19px;
+  max-width: 100%;
+  height: var(--testimonials-logo-height);
+  margin-top: max(0.75rem, 1vw);
   object-fit: contain;
   object-position: left center;
 }
@@ -1012,22 +1024,24 @@ button:focus-visible {
 .home-testimonials__stats {
   display: grid;
   gap: 0;
-  margin: 16px 0 0;
-  padding: 3px 0 0;
+  margin: max(0.75rem, 0.85vw) 0 0;
+  padding: 0.2em 0 0;
   border-top: 1px solid #2c3032;
-}
-
-.home-testimonials__stat {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
-  min-height: 46px;
   font-family: var(--sanity-mono);
-  font-size: 16px;
+  font-size: var(--testimonials-data-size);
   font-weight: 400;
   line-height: 1.35;
   letter-spacing: -0.045em;
+}
+
+.home-testimonials__stat {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 1.5em;
+  min-height: 2.7em;
+  padding-block: 0.45em;
+  overflow-wrap: anywhere;
 }
 
 .home-testimonials__stat dt {
@@ -1045,37 +1059,36 @@ button:focus-visible {
 }
 
 .home-testimonials__statement {
-  position: relative;
+  display: grid;
+  grid-area: statement;
   align-self: start;
   min-width: 0;
-  padding-top: clamp(56px, 13svh, 112px);
-  padding-right: 3.5%;
+  font-size: var(--sanity-statement-size);
   animation: home-testimonials-appear 320ms ease both;
 }
 
 .home-testimonials__quote-symbol {
-  position: absolute;
-  z-index: 0;
-  top: clamp(10px, 3svh, 32px);
-  left: -8px;
+  grid-area: 1 / 1;
+  align-self: start;
+  display: block;
   color: #1c1f20;
   font-family: Arial, sans-serif;
-  font-size: clamp(120px, 10vw, 185px);
+  font-size: 3.4em;
   font-weight: 700;
-  line-height: 1;
+  line-height: 0.6;
   pointer-events: none;
   user-select: none;
 }
 
 .home-testimonials__quote {
-  position: relative;
-  z-index: 1;
+  grid-area: 1 / 1;
   margin: 0;
-  max-width: 915px;
-  font-size: clamp(31px, 2.9vw, 54px);
+  padding-top: 0.7em;
+  font-size: inherit;
   font-weight: 400;
   line-height: 1.22;
-  letter-spacing: -0.04em;
+  letter-spacing: -0.025em;
+  text-wrap: pretty;
 }
 
 .home-testimonials__quote-muted {
@@ -1087,19 +1100,18 @@ button:focus-visible {
 }
 
 .home-testimonials__controls {
-  position: absolute;
-  right: 2%;
-  bottom: clamp(28px, 6svh, 66px);
-  z-index: 2;
+  grid-area: controls;
+  justify-self: end;
+  align-self: end;
   display: flex;
-  gap: 10px;
+  gap: max(0.5rem, 0.6vw);
 }
 
 .home-testimonials__arrow {
   display: grid;
   place-items: center;
-  width: 45px;
-  height: 45px;
+  width: var(--testimonials-arrow-size);
+  height: var(--testimonials-arrow-size);
   padding: 0;
   border: 1px solid #3a3d3e;
   border-radius: 50%;
@@ -1107,6 +1119,11 @@ button:focus-visible {
   color: #ececeb;
   cursor: pointer;
   transition: border-color 180ms ease, background-color 180ms ease;
+}
+
+.home-testimonials__arrow svg {
+  width: 50%;
+  height: 50%;
 }
 
 .home-testimonials__arrow:hover {
@@ -1120,98 +1137,19 @@ button:focus-visible {
 }
 
 @media (max-width: 900px) {
-  .home-testimonials {
-    height: auto;
-    min-height: 100svh;
-    overflow: visible;
-  }
-
   .home-testimonials__shell {
-    height: auto;
-    min-height: 100svh;
-    padding: 26px var(--sanity-gutter) 90px;
-  }
-
-  .home-testimonials__eyebrow {
-    position: static;
-  }
-
-  .home-testimonials__layout {
-    display: flex;
-    flex-direction: column;
-    height: auto;
-    gap: 36px;
-  }
-
-  .home-testimonials__statement {
-    order: 0;
-    width: 100%;
-    padding: 56px 0 0;
+    grid-template-areas:
+      "label"
+      "statement"
+      "profile"
+      "controls";
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto;
+    min-height: 0;
   }
 
   .home-testimonials__profile {
-    order: 1;
-    align-self: stretch;
-    width: min(100%, 460px);
-    margin: 0;
-  }
-
-  .home-testimonials__quote-symbol {
-    top: 2px;
-  }
-
-  .home-testimonials__quote {
-    font-size: clamp(29px, 5.5vw, 48px);
-  }
-
-  .home-testimonials__controls {
-    right: var(--sanity-gutter);
-    bottom: 26px;
-  }
-}
-
-@media (max-width: 540px) {
-  .home-testimonials__layout {
-    gap: 30px;
-  }
-
-  .home-testimonials__quote {
-    font-size: clamp(25px, 7vw, 36px);
-    line-height: 1.21;
-  }
-
-  .home-testimonials__statement {
-    padding-top: 43px;
-  }
-
-  .home-testimonials__quote-symbol {
-    font-size: 130px;
-  }
-
-  .home-testimonials__counter {
-    margin-bottom: 16px;
-  }
-
-  .home-testimonials__portrait {
-    width: 70px;
-    height: 70px;
-  }
-
-  .home-testimonials__identity {
-    margin-top: 14px;
-  }
-
-  .home-testimonials__name {
-    font-size: 22px;
-  }
-
-  .home-testimonials__role {
-    font-size: 16px;
-  }
-
-  .home-testimonials__stat {
-    min-height: 38px;
-    font-size: 13px;
+    width: 100%;
   }
 }
 
@@ -1225,6 +1163,7 @@ button:focus-visible {
     transition: none;
   }
 }
+
 
 /* 09 — Client logos: a fluid golden-ratio scale and a seamless local marquee */
 .home-testimonials__trusted {
