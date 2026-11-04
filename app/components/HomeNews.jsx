@@ -103,7 +103,8 @@ export default function HomeNews() {
               <div className="home-news__card-content">
                 <div className="home-news__card-top">
                   <p className="home-news__card-meta">
-                    {article.category} <span aria-hidden="true">·</span> {article.date}
+                    {article.category} <span aria-hidden="true">·</span>{" "}
+                    <span className="home-news__card-date">{article.date}</span>
                   </p>
                   <h3 className="home-news__card-title">{article.title}</h3>
                 </div>
