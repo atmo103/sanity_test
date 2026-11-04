@@ -553,29 +553,42 @@ button:focus-visible {
 }
 
 
-/* 05 — Orange editorial introduction: one responsive typographic block */
+/* 05 — Introduction: golden-ratio typography and a reversible scroll surface */
 .home-intro {
+  /* Desktop text = 7.4vw hero title / 1.618 squared, rounded to 2.83vw. */
+  --intro-text-size: 2.83vw;
+  --intro-gutter: max(1.25rem, 3.2vw);
+  --intro-corner-radius: max(1rem, 1.6vw);
+  --intro-shrink: 0.02;
+  --intro-scroll: 0;
+  min-height: 100svh;
+  background: var(--sanity-bg);
+  color: #10100d;
+}
+
+.home-intro__surface {
   display: grid;
   align-items: center;
+  width: 100%;
   min-height: 100svh;
+  overflow: clip;
+  border-radius: calc(var(--intro-corner-radius) * var(--intro-scroll));
   background: var(--sanity-accent);
-  color: #10100d;
+  transform: scale(calc(1 - var(--intro-shrink) * var(--intro-scroll)));
+  transform-origin: center;
 }
 
 .home-intro__inner {
   width: 100%;
-  max-width: 1920px;
-  margin: 0 auto;
-  padding: clamp(96px, 9vw, 160px) var(--sanity-gutter);
+  padding: max(4rem, 8vw) var(--intro-gutter);
 }
 
 .home-intro__heading {
-  max-width: 1550px;
   margin: 0;
-  font-size: clamp(30px, 4.5vw, 82px);
+  font-size: max(1.25rem, var(--intro-text-size));
   font-weight: 400;
-  line-height: 1.105;
-  letter-spacing: -0.058em;
+  line-height: 1.22;
+  letter-spacing: -0.025em;
   text-wrap: pretty;
 }
 
@@ -2108,4 +2121,5 @@ button:focus-visible {
     transition: none;
   }
 }
+
 
