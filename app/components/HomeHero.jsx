@@ -11,7 +11,7 @@ export default function HomeHero() {
           preload="metadata"
           poster="/images/hero-poster.webp"
         >
-          <source src="/videos/hero.mp4" type="video/mp4" />
+          <source src="/videos/hero_sanity_loop.mp4" type="video/mp4" />
         </video>
       </div>
 
