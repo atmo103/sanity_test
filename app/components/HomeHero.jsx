@@ -30,10 +30,10 @@ export default function HomeHero() {
             <span className="home-hero__press-content">
               <span className="home-hero__press-meta">
                 <span className="home-hero__press-indicator" aria-hidden="true" />
-                Press
+                 Ciclo integral de ingeniería
               </span>
               <span className="home-hero__press-title">
-                Helix DC and Sanity Power to deploy 5 GW of AI UPS™ at multiple hyperscale campuses.
+                Escucharemos atentamente sus necesidades para sintetizarlas en la solución.
               </span>
             </span>
             <span className="home-hero__press-image" aria-hidden="true" />
