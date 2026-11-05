@@ -1,3 +1,6 @@
+import { Suspense } from "react";
+import { connection } from "next/server";
+import { readHomeContent } from "./lib/cms/sanity";
 import SiteHeader from "./components/SiteHeader";
 import HomeHero from "./components/HomeHero";
 import HomeIntro from "./components/HomeIntro";
@@ -14,10 +17,17 @@ export default function HomePage() {
         <HomeHero />
         {/* <HomeIntro />
         <HomeWhy /> */}
-        <HomeTestimonials />
-        <HomeNews />
+        <Suspense fallback={null}><EditableHomeContent /></Suspense>
       </main>
       <HomeFooter />
     </>
   );
+}
+
+
+// The public page always reads published content; drafts require a panel session.
+async function EditableHomeContent() {
+  await connection();
+  const content = await readHomeContent();
+  return <><HomeTestimonials testimonials={content.testimonials} trustedClients={content.clients} /><HomeNews news={content.news} /></>;
 }

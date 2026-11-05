@@ -2,127 +2,6 @@
 
 import { useState } from "react";
 
-const testimonials = [
-  {
-    id: "elena",
-    person: "Elena Marsh",
-    role: "VP, Infrastructure",
-    portrait: "/images/testimonials/elena-marsh.webp",
-    company: "Helix DC",
-    logo: "/images/testimonials/helix-dc.webp",
-    stats: [
-      ["Scope", "AI UPS™"],
-      ["Deployed", "5 GW"],
-      ["Since", "2024"],
-    ],
-    quoteMuted:
-      "Durante la puesta en marcha pudimos revisar el funcionamiento del sistema junto con sus ingenieros y resolver las dudas de nuestro personal. La capacitación nos ayudó a comprender la operación y las variables de control. ",
-    quoteBright: "Valoramos especialmente esa disposición para explicar las decisiones y acompañarnos mientras nos familiarizábamos con el equipo.",
-  },
-  {
-    id: "daniel",
-    person: "Daniel Okafor",
-    role: "Director of Energy",
-    portrait: "/images/testimonials/daniel-okafor.webp",
-    company: "Sundvik",
-    logo: "/images/testimonials/sundvik.webp",
-    stats: [
-      ["Scope", "Firm capacity"],
-      ["Deployed", "1.1 GWh"],
-      ["Since", "2026"],
-    ],
-    quoteMuted:
-      "Necesitábamos integrar un equipo nuevo a una línea que ya estaba en operación. DidaControl revisó con nosotros las condiciones del proceso y los requerimientos de instalación y control. ",
-    quoteBright: "Pudimos discutir cada decisión técnica y llegar a un diseño que encajara con nuestra operación.",
-  },
-  {
-    id: "priya",
-    person: "Priya Raman",
-    role: "Chief Operating Officer",
-    portrait: "/images/testimonials/priya-raman.webp",
-    company: "Texas Grid",
-    logo: "/images/testimonials/texas-grid.webp",
-    stats: [
-      ["Scope", "Grid stability"],
-      ["Markets", "12 ISOs"],
-      ["Since", "2025"],
-    ],
-    quoteMuted:
-      "La planta piloto debía responder a nuestros objetivos de investigación y permitir ensayos bajo distintas condiciones. El equipo de DidaControl entendió esa necesidad desde el diseño. ",
-    quoteBright: "Su experiencia nos ayudó a definir los equipos, la instrumentación y las posibilidades de ajuste que necesitábamos para trabajar en el laboratorio.",
-  },
-];
-
-// Client marks are bundled locally as white artwork with transparent backgrounds.
-const trustedClients = [
-  {
-    name: "SENA",
-    src: "/images/logos/sena.svg",
-    width: 986,
-    height: 962,
-  },
-  {
-    name: "Coca-Cola",
-    src: "/images/logos/coca-cola.svg",
-    width: 501,
-    height: 160,
-  },
-  {
-    name: "Colombina",
-    src: "/images/logos/colombina.svg",
-    width: 346,
-    height: 177,
-  },
-  {
-    name: "Baxter",
-    src: "/images/logos/baxter.svg",
-    width: 166,
-    height: 28,
-  },
-  {
-    name: "Manuelita",
-    src: "/images/logos/manuelita.svg",
-    width: 282,
-    height: 64,
-  },
-  {
-    name: "Nutrium",
-    src: "/images/logos/nutrium.svg",
-    width: 374,
-    height: 97,
-  },
-  {
-    name: "Riopaila Castilla",
-    src: "/images/logos/riopaila-castilla.svg",
-    width: 1214,
-    height: 246,
-  },
-  {
-    name: "Levapan",
-    src: "/images/logos/levapan.svg",
-    width: 201,
-    height: 124,
-  },
-  {
-    name: "Smurfit Kappa",
-    src: "/images/logos/smurfit-kappa.svg",
-    width: 245,
-    height: 32,
-  },
-  {
-    name: "Universidad Santiago de Cali",
-    src: "/images/logos/universidad-santiago-de-cali.svg",
-    width: 177,
-    height: 177,
-  },
-  {
-    name: "Universidad Icesi",
-    src: "/images/logos/universidad-icesi.svg",
-    width: 476,
-    height: 177,
-  },
-];
-
 function Arrow({ direction }) {
   return (
     <svg
@@ -144,23 +23,27 @@ function Arrow({ direction }) {
   );
 }
 
-export default function HomeTestimonials() {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const current = testimonials[activeIndex];
+export default function HomeTestimonials({ testimonials = [], trustedClients = [], initialActiveId }) {
+  const [activeIndex, setActiveIndex] = useState(() => Math.max(0, testimonials.findIndex((item) => item.id === initialActiveId)));
+  const index = Math.min(activeIndex, Math.max(0, testimonials.length - 1));
+  const current = testimonials[index];
 
   const change = (direction) => {
     setActiveIndex((previous) =>
-      (previous + direction + testimonials.length) % testimonials.length
+      testimonials.length ? (Math.min(previous, testimonials.length - 1) + direction + testimonials.length) % testimonials.length : 0
     );
   };
 
+  if (!testimonials.length && !trustedClients.length) return null;
+
   return (
     <section
+      id="testimonios"
       className="home-testimonials"
       aria-label="Client testimonials"
       aria-roledescription="carousel"
     >
-      <div className="home-testimonials__shell">
+      {current && <div className="home-testimonials__shell">
         <p className="home-testimonials__eyebrow">
           <span className="home-testimonials__accent" aria-hidden="true" />
           Testimonios
@@ -168,30 +51,30 @@ export default function HomeTestimonials() {
 
         <div className="home-testimonials__layout">
           <div className="home-testimonials__profile" key={`${current.id}-profile`}>
-            <span className="home-testimonials__counter" aria-label={`Testimonial ${activeIndex + 1} of ${testimonials.length}`}>
-              {String(activeIndex + 1).padStart(2, "0")} / {String(testimonials.length).padStart(2, "0")}
+            <span className="home-testimonials__counter" aria-label={`Testimonial ${index + 1} of ${testimonials.length}`}>
+              {String(index + 1).padStart(2, "0")} / {String(testimonials.length).padStart(2, "0")}
             </span>
 
-            <img
+            {current.portrait && <img
               className="home-testimonials__portrait"
               src={current.portrait}
               alt={current.person}
               width="82"
               height="82"
               decoding="async"
-            />
+            />}
 
             <div className="home-testimonials__identity">
               <h3 className="home-testimonials__name">{current.person}</h3>
               <p className="home-testimonials__role">{current.role}</p>
             </div>
 
-            <img
+            {current.logo && <img
               className="home-testimonials__company-logo"
               src={current.logo}
               alt={current.company}
               decoding="async"
-            />
+            />}
 
             {/* <dl className="home-testimonials__stats">
               {current.stats.map(([label, value]) => (
@@ -221,7 +104,7 @@ export default function HomeTestimonials() {
           </div>
         </div>
 
-        <div className="home-testimonials__controls" aria-label="Testimonial navigation">
+        {testimonials.length > 1 && <div className="home-testimonials__controls" aria-label="Testimonial navigation">
           <button
             type="button"
             className="home-testimonials__arrow"
@@ -238,10 +121,10 @@ export default function HomeTestimonials() {
           >
             <Arrow direction="next" />
           </button>
-        </div>
-      </div>
+        </div>}
+      </div>}
 
-      <div className="home-testimonials__trusted" aria-label="Trusted by">
+      {trustedClients.length > 0 && <div id="clientes" className="home-testimonials__trusted" aria-label="Trusted by">
         <p className="home-testimonials__trusted-label">
           <span className="home-testimonials__trusted-accent" aria-hidden="true" />
           Trusted by
@@ -270,8 +153,9 @@ export default function HomeTestimonials() {
             ))}
           </div>
         </div>
-      </div>
+      </div>}
     </section>
   );
 }
+
 

@@ -1896,3 +1896,173 @@ button:focus-visible {
   }
 }
 
+
+
+/* 10 — DidaControl content panel: isolated, fluid and independent of the Home. */
+.dida-panel {
+  --panel-unit: max(0.875rem, 0.94vw);
+  --panel-line: #303436;
+  --panel-surface: #101314;
+  --panel-muted: #a4a29e;
+  --panel-red: #e8302a;
+  font-family: var(--sanity-font);
+  font-size: var(--panel-unit);
+  color: #f1f0ef;
+  background: #07090a;
+  min-height: 100svh;
+  line-height: 1.5;
+}
+.dida-panel *, .dida-panel *::before, .dida-panel *::after { box-sizing: border-box; }
+.dida-panel button, .dida-panel input, .dida-panel textarea, .dida-panel select { font: inherit; }
+.dida-panel button { cursor: pointer; }
+.dida-panel button:disabled, .dida-panel fieldset:disabled { opacity: 0.55; cursor: wait; }
+.dida-panel svg { width: 1.25em; height: 1.25em; flex: none; }
+.dida-panel a:focus-visible, .dida-panel button:focus-visible, .dida-panel select:focus-visible, .dida-panel input:focus-visible, .dida-panel textarea:focus-visible { outline: 2px solid #e8302a; outline-offset: 3px; }
+.dida-panel h1, .dida-panel h2, .dida-panel p { margin: 0; overflow-wrap: anywhere; }
+.dida-panel h1 { font-size: 2.25em; line-height: 1.15; font-weight: 500; letter-spacing: -0.04em; }
+.dida-panel h2 { font-size: 1.6em; line-height: 1.2; font-weight: 500; letter-spacing: -0.035em; }
+.dida-brand { display: inline-flex; align-items: center; gap: 0.55em; font-size: 1.35em; font-weight: 600; letter-spacing: -0.04em; }
+.dida-brand__mark { display: inline-grid; place-items: center; position: relative; width: 1.7em; height: 1.7em; border-radius: 0.18em; background: #1e2325; font-size: 0.85em; }
+.dida-brand__mark span { color: var(--panel-red); position: absolute; bottom: -0.12em; right: 0.12em; font-size: 1.5em; }
+.dida-eyebrow { font: 400 0.68em/1.5 var(--sanity-mono); letter-spacing: 0.15em; text-transform: uppercase; color: var(--panel-muted); }
+.dida-button { display: inline-flex; justify-content: center; align-items: center; gap: 0.6em; padding: 0.7em 1.15em; min-height: 2.8em; border: 1px solid #64696b; border-radius: 0.5em; color: #f1f0ef; background: transparent; line-height: 1.2; white-space: nowrap; transition: background 160ms, border-color 160ms; }
+.dida-button:hover:not(:disabled) { background: #232829; border-color: #a1a7aa; }
+.dida-button--primary { background: var(--panel-red); border-color: var(--panel-red); color: white; }
+.dida-button--primary:hover:not(:disabled) { background: #c6231e; border-color: #c6231e; }
+.dida-text-button { color: #ef514b; background: none; border: 0; padding: 0.25em 0; text-align: left; text-decoration: underline; text-underline-offset: 0.2em; }
+.dida-help { font-size: 0.68em; line-height: 1.5; color: var(--panel-muted); margin-top: 0.65em !important; overflow-wrap: anywhere; }
+.dida-message { display: flex; align-items: center; justify-content: space-between; gap: 1em; flex-wrap: wrap; padding: 0.9em 1.2em; margin-bottom: 1.2em !important; font-size: 0.85em; border: 1px solid #41564b; border-radius: 0.5em; background: #101e17; color: #bcd9c7; overflow-wrap: anywhere; }
+.dida-message--error { border-color: #703430; background: #241411; color: #ffd3ce; }
+.dida-workspace { display: grid; grid-template-columns: 15em minmax(0, 1fr); }
+.dida-sidebar { position: sticky; top: 0; height: 100svh; align-self: start; overflow-y: auto; border-right: 1px solid var(--panel-line); padding: 2em 1.25em; display: flex; flex-direction: column; gap: 1em; min-height: 0; }
+.dida-sidebar .dida-brand { margin: 0 0.35em; }
+.dida-sidebar > .dida-eyebrow { margin: 0 0.7em 2em; }
+.dida-sidebar nav { display: grid; gap: 0.6em; }
+.dida-nav-item { border: 1px solid transparent; display: flex; align-items: center; gap: 1em; padding: 0.85em 0.9em; border-radius: 0.45em; background: transparent; text-align: left; color: #f1f0ef; }
+.dida-nav-item > span { width: 0.7em; height: 0.7em; border: 1px solid #92999c; border-radius: 0.15em; }
+.dida-nav-item small { margin-left: auto; color: var(--panel-muted); font-size: 0.7em; }
+.dida-nav-item.is-active { background: #321715; border-color: #48221f; }
+.dida-nav-item.is-active > span { background: var(--panel-red); border-color: var(--panel-red); }
+.dida-nav-item:hover:not(:disabled):not(.is-active) { background: #14191b; }
+.dida-sidebar__bottom { margin-top: auto; display: grid; gap: 1.6em; padding: 4em 0.7em 0; font-size: 0.78em; }
+.dida-sidebar__bottom p { color: var(--panel-muted); }
+.dida-logout { display: flex; align-items: center; gap: 0.7em; background: none; border: 0; padding: 0; text-align: left; }
+.dida-main-shell { min-width: 0; }
+.dida-topbar { min-height: 5em; padding: 1em 2.3em; border-bottom: 1px solid var(--panel-line); display: flex; align-items: center; gap: 1em; }
+.dida-topbar > a:not(.dida-brand) { display: flex; align-items: center; gap: 0.7em; margin-left: auto; font-size: 0.9em; }
+.dida-topbar__label { font: 0.65em var(--sanity-mono); text-transform: uppercase; letter-spacing: 0.1em; color: #82898c; }
+.dida-main { padding: 2.5em 2.3em; }
+.dida-page-heading { display: flex; justify-content: space-between; align-items: center; gap: 1.5em; margin-bottom: 2em; }
+.dida-page-heading .dida-eyebrow { margin-bottom: 0.4em; }
+.dida-page-heading > button { font-size: 0.85em; }
+.dida-editor-layout { display: grid; grid-template-columns: minmax(0, 16em) minmax(0, 1fr); gap: 1.5em; align-items: start; }
+.dida-record-list { min-width: 0; }
+.dida-record-list__heading { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.8em; }
+.dida-icon-button { display: inline-grid; place-items: center; background: transparent; border: 1px solid var(--panel-line); border-radius: 0.4em; width: 2.2em; height: 2.2em; font-size: 0.7em !important; }
+.dida-record-cards { display: grid; gap: 0.65em; }
+.dida-record-card { width: 100%; min-height: 5.25em; display: flex; align-items: center; gap: 0.8em; padding: 0.75em; background: #0b0e0f; border: 1px solid var(--panel-line); border-radius: 0.6em; text-align: left; }
+.dida-record-card.is-selected { background: #321715; border-color: #6c2e2a; }
+.dida-record-card > svg { width: 1em; margin-left: auto; }
+.dida-record-card__copy { display: grid; gap: 0.3em; min-width: 0; }
+.dida-record-card strong { font-size: 0.8em; font-weight: 500; line-height: 1.35; overflow-wrap: anywhere; }
+.dida-record-card small { font-size: 0.62em; color: var(--panel-muted); }
+.dida-record-card__image { flex: none; display: grid; place-items: center; width: 3em; height: 3em; border-radius: 0.25em; overflow: hidden; background: #161c1f; }
+.dida-record-card__image img { width: 85%; height: 85%; object-fit: contain; }
+.dida-record-card__image.is-portrait { border-radius: 50%; }
+.dida-record-card__image.is-portrait img { width: 100%; height: 100%; object-fit: cover; }
+.dida-record-list__hint { margin-top: 1.6em !important; color: var(--panel-muted); font-size: 0.72em; line-height: 1.6; }
+.dida-editor { padding: 1.65em; border: 1px solid var(--panel-line); border-radius: 0.8em; background: var(--panel-surface); min-width: 0; }
+.dida-editor__heading { display: flex; align-items: center; flex-wrap: wrap; gap: 0.7em; margin-bottom: 1.5em; }
+.dida-status { display: inline-flex; align-items: center; gap: 0.5em; margin-left: auto; color: var(--panel-muted); font-size: 0.65em; }
+.dida-status i { width: 0.5em; height: 0.5em; border-radius: 50%; background: #72957b; }
+.dida-status i.is-dirty { background: #e1a36c; }
+.dida-editor fieldset { margin: 0; padding: 0; border: 0; min-width: 0; }
+.dida-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.15em 1.6em; }
+.dida-field { display: flex; flex-direction: column; gap: 0.4em; min-width: 0; }
+.dida-field--wide { grid-column: 1 / -1; }
+.dida-field > label, .dida-field > span, .dida-record-select > span, .dida-mobile-section > label { font: 0.68em/1.5 var(--sanity-mono); letter-spacing: 0.1em; text-transform: uppercase; color: #d1d3d3; }
+.dida-field input:not([type="checkbox"]), .dida-field textarea, .dida-panel select { width: 100%; min-width: 0; padding: 0.6em 0.75em; border: 1px solid #62696b; border-radius: 0.4em; background: #0b0e0f; color: #f1f0ef; line-height: 1.5; font-size: 0.9em; }
+.dida-field textarea { resize: vertical; min-height: 4em; }
+.dida-field input[type="date"] { color-scheme: dark; }
+.dida-image-field__row { display: flex; align-items: center; flex-wrap: wrap; gap: 0.9em; }
+.dida-image-field__row > div:last-child { flex: 1 1 9em; min-width: 0; }
+.dida-image-field__row .dida-text-button { font-size: 0.82em; }
+.dida-image-field__art { width: 6.5em; height: 4.2em; flex: none; padding: 0.4em; background: #202628; border: 1px solid #41484a; border-radius: 0.4em; display: grid; place-items: center; }
+.dida-image-field__art--portrait { width: 4.2em; padding: 0; border-radius: 50%; overflow: hidden; }
+.dida-image-field__art img { display: block; max-width: 100%; width: 100%; height: 100%; min-height: 0; object-fit: contain; }
+.dida-image-field__art--portrait img { object-fit: cover; }
+.dida-file { position: absolute; width: 1px !important; height: 1px; padding: 0 !important; opacity: 0; overflow: hidden; }
+.dida-check { display: flex; align-items: center; gap: 0.6em; text-transform: none !important; letter-spacing: normal !important; font: 0.85em/1.5 var(--sanity-font) !important; cursor: pointer; }
+.dida-check input { accent-color: var(--panel-red); width: 1.1em; height: 1.1em; flex: none; }
+.dida-visibility { justify-content: center; }
+.dida-editor__actions { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1em; margin-top: 1.7em; padding-top: 1.3em; border-top: 1px solid var(--panel-line); font-size: 0.82em; }
+.dida-editor__actions > div { display: flex; align-items: center; flex-wrap: wrap; justify-content: flex-end; gap: 0.75em; margin-left: auto; }
+.dida-delete { color: #d49089; border: 0; background: transparent; padding: 0.6em 0; }
+.dida-editor__help { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.7em; margin-top: 1.4em !important; }
+.dida-editor__help a { color: #b8bebf; text-decoration: underline; text-underline-offset: 0.2em; }
+.dida-empty { padding: 4em 2em; border: 1px solid var(--panel-line); border-radius: 0.8em; display: grid; justify-items: start; align-content: start; gap: 1em; background: var(--panel-surface); }
+.dida-empty > p:not(.dida-eyebrow) { color: var(--panel-muted); font-size: 0.9em; }
+.dida-dialog { width: min(90vw, 30em); padding: 2em; color: #f1f0ef; background: #141819; border: 1px solid #52595b; border-radius: 0.8em; }
+.dida-dialog::backdrop { background: #000b; backdrop-filter: blur(4px); }
+.dida-dialog > p { color: var(--panel-muted); margin-top: 1em; }
+.dida-dialog__actions { display: flex; justify-content: flex-end; gap: 0.75em; flex-wrap: wrap; margin-top: 1.8em; font-size: 0.9em; }
+.dida-login { padding: 2.5em; display: flex; align-items: center; justify-content: center; position: relative; background: radial-gradient(ellipse at 80% 20%, #251511 0, transparent 55%), #07090a; }
+.dida-login > .dida-brand { position: absolute; left: 2em; top: 1.5em; }
+.dida-login__card { width: min(100%, 27em); display: grid; gap: 1.5em; padding: 2em; border: 1px solid var(--panel-line); border-radius: 1em; background: #101314; margin: 6em 0; }
+.dida-login__card h1 { font-size: 2.7em; }
+.dida-login__card h1 span { color: var(--panel-muted); }
+.dida-login__card > p { color: var(--panel-muted); font-size: 0.9em; }
+.dida-login__back { display: inline-flex; align-items: center; justify-content: center; gap: 0.6em; color: var(--panel-muted); font-size: 0.8em; }
+.dida-login__footer { position: absolute; bottom: 1.5em; font: 0.6em var(--sanity-mono); color: var(--panel-muted); letter-spacing: 0.05em; }
+.dida-panel--loading { display: grid; place-items: center; padding: 2em; }
+.dida-preview-bar { position: fixed; bottom: 1em; left: 50%; transform: translateX(-50%); z-index: 100; width: max-content; max-width: calc(100% - 2em); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.8em 2em; padding: 0.8em 1.1em; background: #181e20; color: #f1f0ef; border: 1px solid #6a7376; border-radius: 0.6em; font: max(0.75rem, 0.8vw)/1.4 var(--sanity-font); box-shadow: 0 0.3em 2em #0008; }
+.dida-preview-bar a { color: #ff7069; }
+.dida-skip { position: fixed; left: 1em; top: -5em; z-index: 120; padding: 0.7em 1em; background: #e8302a; border-radius: 0.4em; }
+.dida-skip:focus { top: 1em; }
+.dida-brand--mobile, .dida-menu-toggle, .dida-mobile-section, .dida-record-select { display: none; }
+/* Uploaded client marks keep the existing white-on-dark presentation. */
+.home-testimonials__trusted-logo { filter: brightness(0) invert(1); }
+@media (max-width: 64rem) {
+  .dida-workspace { display: block; }
+  .dida-sidebar { display: none; position: fixed; z-index: 60; inset: 4.5em 0 auto; min-height: 0; height: auto; background: #101314; border-right: 0; border-bottom: 1px solid var(--panel-line); padding: 1.5em; max-height: calc(100svh - 4.5em); overflow-y: auto; }
+  .dida-sidebar.is-open { display: flex; }
+  .dida-sidebar > .dida-brand, .dida-sidebar > .dida-eyebrow, .dida-sidebar__bottom > p { display: none; }
+  .dida-sidebar__bottom { padding-top: 1em; gap: 1em; }
+  .dida-brand--mobile, .dida-menu-toggle { display: inline-flex; }
+  .dida-menu-toggle { background: transparent; border: 0; padding: 0.5em; align-items: center; justify-content: center; }
+  .dida-topbar { min-height: 4.5em; padding: 0.7em 1.4em; position: relative; z-index: 65; background: #0b0e0f; }
+  .dida-topbar__label { display: none; }
+  .dida-topbar > a:not(.dida-brand) { font-size: 0.8em; }
+  .dida-main { padding: 1.5em; }
+  .dida-mobile-section { display: grid; gap: 0.4em; margin-bottom: 1.5em; }
+  .dida-mobile-section > label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+  .dida-editor-layout { grid-template-columns: minmax(0, 1fr); gap: 1.2em; }
+  .dida-record-cards, .dida-record-list__hint, .dida-record-list__heading { display: none; }
+  .dida-record-select { display: grid; gap: 0.45em; }
+}
+@media (max-width: 40rem) {
+  .dida-panel { --panel-unit: 1rem; }
+  .dida-main { padding: 1.2em; }
+  .dida-topbar { padding: 0.65em 1.2em; }
+  .dida-topbar > a:not(.dida-brand) { font-size: 0.72em; }
+  .dida-topbar > a:not(.dida-brand) svg { display: none; }
+  .dida-brand { font-size: 1.2em; }
+  .dida-page-heading { gap: 0.75em; flex-wrap: wrap; margin-bottom: 1.3em; }
+  .dida-page-heading h1 { font-size: 1.9em; }
+  .dida-page-heading > button { font-size: 0.8em; }
+  .dida-editor { padding: 1.1em; }
+  .dida-editor h2 { font-size: 1.4em; }
+  .dida-fields { grid-template-columns: minmax(0, 1fr); gap: 1.2em; }
+  .dida-field input:not([type="checkbox"]), .dida-field textarea, .dida-panel select { font-size: 1em; }
+  .dida-image-field__row > div:last-child { flex-basis: 8em; }
+  .dida-editor__actions > div { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); width: 100%; }
+  .dida-editor__actions > div > button:first-child { grid-column: 1 / -1; }
+  .dida-editor__actions .dida-button { white-space: normal; }
+  .dida-login { padding: 1.25em; }
+  .dida-login__card { padding: 1.5em; }
+  .dida-login__card h1 { font-size: 2.25em; }
+  .dida-login > .dida-brand { left: 1.25em; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .dida-panel *, .dida-panel *::before, .dida-panel *::after { scroll-behavior: auto; transition: none; }
+}
