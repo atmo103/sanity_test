@@ -1659,11 +1659,12 @@ button:focus-visible {
   line-height: 1.01;
   letter-spacing: -0.008em;
   overflow-wrap: break-word;
+  color:#fff;
 }
 
 .home-footer__headline span {
   display: block;
-  color: rgba(16, 17, 18, 0.73);
+  color: #fff;
 }
 
 .home-footer__description {
@@ -1706,6 +1707,7 @@ button:focus-visible {
   font-family: var(--sanity-mono);
   text-transform: uppercase;
   letter-spacing: 0.13em;
+
 }
 
 .home-footer__metric dt {

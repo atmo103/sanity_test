@@ -31,9 +31,9 @@ export default function HomeNews({ news = [] }) {
               Últimas Noticias
             </h2>
             <p className="home-news__description">
-              Sanity Power builds and operates the hard layer behind modern
+              {/* Sanity Power builds and operates the hard layer behind modern
               computing. A record of what we&apos;ve shipped, signed, and
-              switched on.
+              switched on. */}
             </p>
           </div>
 
